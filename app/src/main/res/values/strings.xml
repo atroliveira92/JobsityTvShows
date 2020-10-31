@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Jobsity Tv Series</string>
+    <string name="no_internet_connection_message">No connection found. Please, make sure you have active data connection</string>
+    <string name="circle_separator">●</string>
+    <string name="try_again">Try again</string>
+    <string name="error_load_tv_shows">\"An error happen when load tv shows. Please try again or contact support \"</string>
+    <string name="internet_connection_error_message">No internet connection. Please check if your device is connected to internet</string>
+    <string name="error_load_more_tv_shows_message">Error when load more tv shows</string>
+</resources>
