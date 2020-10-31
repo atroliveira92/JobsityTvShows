@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.show_row.view.*
 
 class TvShowAdapter(val listener: ITvShowAdapter): RecyclerView.Adapter<TvShowAdapter.TVShowViewHolder>() {
     var shows = emptyList<TvShow>()
-        @Synchronized set(value) {
+        set(value) {
             val result = DiffUtil.calculateDiff(
                 GenericDiffCallback(
                     field,

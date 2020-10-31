@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgvError"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -28,7 +28,7 @@
         android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imgvError"
         tools:text="An error happened" />
 
     <Button
