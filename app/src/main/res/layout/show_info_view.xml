@@ -31,6 +31,14 @@
             app:layout_constraintDimensionRatio="H,16:10"
             tools:srcCompat="@tools:sample/avatars" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:background="@drawable/gradient_view_layer"
+                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                app:layout_constraintEnd_toEndOf="@+id/imgvPoster"
+                app:layout_constraintBottom_toBottomOf="@+id/imgvPoster"/>
+
             <TextView
                 android:id="@+id/txvHourAndDays"
                 android:layout_width="wrap_content"
@@ -158,9 +166,9 @@
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:alpha="0.7"
-        android:background="@color/colorPrimary"
+        android:layout_height="80dp"
+        android:background="@drawable/gradient_view_layer"
+        android:rotation="180"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

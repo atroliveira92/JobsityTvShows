@@ -67,20 +67,24 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
     private fun getHourAndDate(tvShow: TvShow): String {
         var value = tvShow.time
         if (tvShow.days.isNotEmpty()) {
+            var days = ""
             value += " ● "
             if (tvShow.days.size == 1) {
-                value += tvShow.days[0]
+                days += tvShow.days[0]
             } else {
                 for (pos in tvShow.days.indices) {
-                    value += if (pos == tvShow.days.size - 1) {
+                    days += if (pos == tvShow.days.size - 1) {
                         "and ${tvShow.days[pos]}"
                     } else {
-                        "${tvShow.days[pos]}, "
+                        ", ${tvShow.days[pos]} "
                     }
                 }
             }
+            days = days.removePrefix(", ")
+            if (days.isNotEmpty()) {
+                value += days
+            }
         }
-
         return value
     }
 
