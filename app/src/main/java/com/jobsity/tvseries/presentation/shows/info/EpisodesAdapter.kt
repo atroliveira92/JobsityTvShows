@@ -6,14 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jobsity.tvseries.R
-import com.jobsity.tvseries.domain.model.Person
 import com.jobsity.tvseries.domain.model.TvShowEpisode
 import com.jobsity.tvseries.presentation.shows.info.EpisodesAdapter.EpisodeViewHolder
 import com.jobsity.tvseries.util.GenericDiffCallback
 import com.jobsity.tvseries.util.extension.loadPhoto
 import kotlinx.android.synthetic.main.episode_row.view.*
 
-class EpisodesAdapter: RecyclerView.Adapter<EpisodeViewHolder>() {
+class EpisodesAdapter(var listener: IEpisodeAdapter): RecyclerView.Adapter<EpisodeViewHolder>() {
     var episodes = emptyList<TvShowEpisode>()
         @Synchronized set(value) {
             val result = DiffUtil.calculateDiff(
@@ -48,6 +47,14 @@ class EpisodesAdapter: RecyclerView.Adapter<EpisodeViewHolder>() {
                 imgvEpisode.loadPhoto(tvShowEpisode.mediumImage)
             }
             txvEpisode.text = tvShowEpisode.name
+
+            itemView.setOnClickListener {
+                listener.onClickEpisode(tvShowEpisode)
+            }
         }
+    }
+
+    interface IEpisodeAdapter {
+        fun onClickEpisode(episode: TvShowEpisode)
     }
 }

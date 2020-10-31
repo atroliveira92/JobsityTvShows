@@ -12,6 +12,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.domain.model.TvShow
+import com.jobsity.tvseries.domain.model.TvShowEpisode
+import com.jobsity.tvseries.presentation.shows.info.EpisodesAdapter.IEpisodeAdapter
 import com.jobsity.tvseries.util.extension.favorite
 import com.jobsity.tvseries.util.extension.htmlText
 import com.jobsity.tvseries.util.extension.loadPhoto
@@ -19,7 +21,7 @@ import kotlinx.android.synthetic.main.show_info_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class TvShowInfoActivity: AppCompatActivity() {
+class TvShowInfoActivity: AppCompatActivity(), IEpisodeAdapter {
 
     companion object {
         const val TVSHOW_ARG = "tvshow_arg"
@@ -33,7 +35,7 @@ class TvShowInfoActivity: AppCompatActivity() {
         }
     }
 
-    private val adapter = EpisodesAdapter()
+    private val adapter = EpisodesAdapter(this)
     private val viewModel: TvShowInfoViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ class TvShowInfoActivity: AppCompatActivity() {
 
         rvEpisodes.adapter = adapter
 
-        viewModel.init(intent.getParcelableExtra<TvShow>(TVSHOW_ARG))
+        viewModel.init(intent.getParcelableExtra(TVSHOW_ARG))
 
         viewModel.viewState.observe(this, Observer {
             adapter.episodes = it.episodes
@@ -52,7 +54,7 @@ class TvShowInfoActivity: AppCompatActivity() {
             spSeasons.adapter = adapter
 
             txvName.text = it.name
-            txvHourAndDays.text = it.hourAndDays
+            txvSeasonAndEpisode.text = it.hourAndDays
             txvGenres.text = it.genres
             txvRating.text = it.rating
 
@@ -61,11 +63,19 @@ class TvShowInfoActivity: AppCompatActivity() {
 
             txvSummary.htmlText(it.summary)
             imgvLike.favorite(it.isFavorite)
-            imgvPoster.loadPhoto(it.posterUrl)
+            imgvEpisode.loadPhoto(it.posterUrl)
         })
 
-        imgvLike.setOnClickListener {
+        viewModel.episodeClick.observe(this, Observer {
+            EpisodeInfoFragment.newInstance(it).show(supportFragmentManager, "episode_info")
+        })
 
+        imgvBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        imgvLike.setOnClickListener {
+            viewModel.didClickOnFavorite()
         }
 
         spSeasons.onItemSelectedListener = object : OnItemSelectedListener {
@@ -80,5 +90,9 @@ class TvShowInfoActivity: AppCompatActivity() {
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {}
         }
+    }
+
+    override fun onClickEpisode(episode: TvShowEpisode) {
+        viewModel.didClickOnEpisode(episode)
     }
 }

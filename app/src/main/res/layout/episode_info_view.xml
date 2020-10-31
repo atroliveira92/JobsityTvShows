@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:contentDescription="@null"
+        android:id="@+id/imgvEpisode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="H,16:10"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/gradient_view_layer"
+        app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
+        app:layout_constraintEnd_toEndOf="@+id/imgvEpisode"
+        app:layout_constraintBottom_toBottomOf="@+id/imgvEpisode"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:rotation="180"
+        android:background="@drawable/gradient_view_layer"
+        app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
+        app:layout_constraintEnd_toEndOf="@+id/imgvEpisode"
+        app:layout_constraintTop_toTopOf="@+id/imgvEpisode"/>
+
+    <TextView
+        android:id="@+id/txvSeasonAndEpisode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:shadowColor="@color/shadow_text_info"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgvEpisode"
+        app:layout_constraintEnd_toEndOf="@+id/imgvEpisode"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
+        tools:text="Season 1 ● Episode 9" />
+
+    <TextView
+        android:id="@+id/txvEpisode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:shadowColor="@color/shadow_text_info"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        android:textColor="@color/primary_text_color"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/txvSeasonAndEpisode"
+        app:layout_constraintEnd_toEndOf="@+id/imgvEpisode"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
+        tools:text="Name of The Episode" />
+
+    <ImageView
+        android:id="@+id/imgvClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgvEpisode"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHeight_max="0dp"
+        app:layout_constrainedHeight="true">
+        <TextView
+            android:id="@+id/txvSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/primary_text_color"
+            android:lineSpacingExtra="2dp"
+            android:textSize="16sp"/>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

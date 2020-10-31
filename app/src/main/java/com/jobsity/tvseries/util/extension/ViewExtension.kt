@@ -17,9 +17,11 @@ fun View.setPortraitHeight(width: Float) {
     this.layoutParams.height = (width * 16/9).toInt()
 }
 
-fun ImageView.loadPhoto(url: String) {
-    Picasso.get().load(url)
-        .into(this)
+fun ImageView.loadPhoto(url: String?) {
+    if (!url.isNullOrEmpty()) {
+        Picasso.get().load(url)
+            .into(this)
+    }
 }
 
 fun ImageView.loadRoundPhoto(url: String?) {

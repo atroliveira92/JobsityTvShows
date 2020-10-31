@@ -16,6 +16,9 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
     private val mutableViewState = MutableLiveData<TvShowInfoViewState>( TvShowInfoViewState() )
     val viewState: LiveData<TvShowInfoViewState> get() = mutableViewState
 
+    private val mutableEpisodeClick = MutableLiveData<TvShowEpisode>()
+    val episodeClick: LiveData<TvShowEpisode> get() = mutableEpisodeClick
+
     private var seasons = mapOf<Int, List<TvShowEpisode>>()
 
     fun init(tvShow: TvShow) {
@@ -120,12 +123,20 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
             mutableViewState.value = mutableViewState.value!!.copy(episodes = hashMap[key]!!)
         }
     }
+
+    fun didClickOnEpisode(tvShowEpisode: TvShowEpisode) {
+        mutableEpisodeClick.value = tvShowEpisode
+    }
+
+    fun didClickOnFavorite() {
+        mutableViewState.value = viewState.value!!.copy(isFavorite = !viewState.value!!.isFavorite)
+    }
 }
 
 data class TvShowInfoViewState(
     val name: String = "",
     val posterUrl: String = "",
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
     val isShowRating: Boolean = false,
     val rating: String = "",
     val hourAndDays: String = "",

@@ -21,7 +21,7 @@
 
         <ImageView
             android:contentDescription="@null"
-            android:id="@+id/imgvPoster"
+            android:id="@+id/imgvEpisode"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -35,12 +35,12 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:background="@drawable/gradient_view_layer"
-                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
-                app:layout_constraintEnd_toEndOf="@+id/imgvPoster"
-                app:layout_constraintBottom_toBottomOf="@+id/imgvPoster"/>
+                app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
+                app:layout_constraintEnd_toEndOf="@+id/imgvEpisode"
+                app:layout_constraintBottom_toBottomOf="@+id/imgvEpisode"/>
 
             <TextView
-                android:id="@+id/txvHourAndDays"
+                android:id="@+id/txvSeasonAndEpisode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -51,10 +51,10 @@
                 android:shadowRadius="3"
                 android:textColor="@color/primary_text_color"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imgvPoster"
+                app:layout_constraintBottom_toBottomOf="@+id/imgvEpisode"
                 app:layout_constraintEnd_toStartOf="@+id/txvRating"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
                 tools:text="7:00pm ● Monday, Tuesday and Saturday" />
 
             <TextView
@@ -69,8 +69,8 @@
                 android:shadowRadius="3"
                 android:textColor="@color/primary_text_color"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/txvHourAndDays"
-                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                app:layout_constraintBottom_toTopOf="@+id/txvSeasonAndEpisode"
+                app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
                 tools:text="Fantasy ● Commedy" />
 
             <TextView
@@ -86,7 +86,7 @@
                 android:textColor="@color/primary_text_color"
                 android:textSize="22sp"
                 app:layout_constraintBottom_toTopOf="@+id/txvGenres"
-                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                app:layout_constraintStart_toStartOf="@+id/imgvEpisode"
                 tools:text="Game of Thrones (2014)" />
 
         <ImageView
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imgvPoster"
+            app:layout_constraintBottom_toBottomOf="@+id/imgvEpisode"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_star_half_24" />
 
@@ -128,7 +128,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgvPoster" />
+                app:layout_constraintTop_toBottomOf="@+id/imgvEpisode" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:layout_marginStart="16dp"
