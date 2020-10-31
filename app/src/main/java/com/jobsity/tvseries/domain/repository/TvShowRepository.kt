@@ -1,5 +1,6 @@
 package com.jobsity.tvseries.domain.repository
 
+import com.jobsity.tvseries.data.TvShowSearchData
 import com.jobsity.tvseries.domain.model.TvShow
 import com.jobsity.tvseries.domain.model.TvShowMapper
 import com.jobsity.tvseries.domain.network.SafeApiRequest
@@ -14,7 +15,7 @@ class TvShowRepository(private val api: TVShowAPI): SafeApiRequest() {
     suspend fun loadTvShows(): List<TvShow> {
         page = 1
         ended = false
-        var list =  loadTvShows(page)
+        val list =  loadTvShows(page)
         if (list.isEmpty()) {
             throw EmptyDataException("tv show list is empty")
         }
@@ -35,9 +36,20 @@ class TvShowRepository(private val api: TVShowAPI): SafeApiRequest() {
         return list
     }
 
+    suspend fun searchTvShow(search: String): List<TvShow> {
+        val listData = apiRequest { api.searchShows(search) }
+        val list = TvShowMapper.mapTvShowSearchData(listData)
+
+        if (list.isEmpty()) {
+            throw EmptyDataException("list is empty")
+        }
+
+        return list
+    }
+
     private suspend fun loadTvShows(page: Int): List<TvShow> {
         val listData =  apiRequest { api.getShows(page) }
-        return TvShowMapper.map(listData)
+        return TvShowMapper.mapTvShowData(listData)
     }
 
 }

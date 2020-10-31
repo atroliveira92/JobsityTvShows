@@ -3,6 +3,7 @@ package com.jobsity.tvseries.domain.network
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.jobsity.tvseries.data.TvShowData
+import com.jobsity.tvseries.data.TvShowSearchData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -15,6 +16,9 @@ interface TVShowAPI {
 
     @GET("/shows")
     suspend fun getShows(@Query("page") page: Int): Response<List<TvShowData>>
+
+    @GET("/search/shows")
+    suspend fun searchShows(@Query("q") search: String): Response<List<TvShowSearchData>>
 
     companion object {
         const val BASE_URL = "http://api.tvmaze.com"

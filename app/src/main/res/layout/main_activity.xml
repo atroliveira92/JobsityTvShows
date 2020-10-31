@@ -7,25 +7,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/toolbar_height"
-    android:background="@color/colorPrimaryDark"
-    app:popupTheme="@style/MainActionBar.Popup"
-    app:theme="@style/ToolbarColoredBackArrow"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:context=".MainActivity" />
+        tools:context=".presentation.MainActivity" />
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        style="@style/MaterialSearchBarDark"
+
+        app:mt_speechMode="false"
+        app:mt_hint="@string/search"
+        app:mt_searchIconTint="@color/toolbar_controllers"
+        app:mt_backIconTint="@color/toolbar_controllers"
+        app:mt_clearIconTint="@color/toolbar_controllers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:id="@+id/searchBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,7 @@
     <string name="error_load_tv_shows">\"An error happen when load tv shows. Please try again or contact support \"</string>
     <string name="internet_connection_error_message">No internet connection. Please check if your device is connected to internet</string>
     <string name="error_load_more_tv_shows_message">Error when load more tv shows</string>
+    <string name="search">Search for shows and people</string>
+    <string name="no_show_found_message">No show with this term was found</string>
+    <string name="generic_error_message">Server error. Please contact support</string>
 </resources>

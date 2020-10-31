@@ -23,4 +23,25 @@
         <item name="android:textSize">@dimen/text_size_toobar</item>
     </style>
 
+<!--    <style name="MaterialSearchViewStyle">-->
+<!--        &lt;!&ndash; Background for the search bar &ndash;&gt;-->
+<!--        <item name="searchBackground">@color/toolbar_controllers</item>-->
+<!--        &lt;!&ndash; Change clear text icon &ndash;&gt;-->
+<!--        <item name="searchCloseIcon">@drawable/ic_close_black</item>-->
+<!--        &lt;!&ndash; Change up icon &ndash;&gt;-->
+<!--        <item name="searchBackIcon">@drawable/ic_arrow_left_black</item>-->
+<!--        &lt;!&ndash; Change icon for the suggestions &ndash;&gt;-->
+<!--        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>-->
+<!--        &lt;!&ndash; Change background for the suggestions list view &ndash;&gt;-->
+<!--        <item name="searchSuggestionBackground">@android:color/white</item>-->
+<!--        &lt;!&ndash; Change text color for edit text. This will also be the color of the cursor &ndash;&gt;-->
+<!--        <item name="android:textColor">@color/search_text</item>-->
+<!--        &lt;!&ndash; Change hint text color for edit text &ndash;&gt;-->
+<!--        <item name="android:textColorHint">@color/search_hint</item>-->
+
+<!--        <item name="android:textAllCaps">true</item>-->
+<!--        &lt;!&ndash; Hint for edit text &ndash;&gt;-->
+<!--        <item name="android:hint">@string/search</item>-->
+<!--    </style>-->
+
 </resources>

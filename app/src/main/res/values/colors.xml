@@ -12,4 +12,6 @@
     <color name="secondary_text_color">#BDBDBD</color>
     <color name="text_controller">#FFFFFF</color>
     <color name="error_message_background">#DA0303</color>
+    <color name="search_text">#212121</color>
+    <color name="search_hint">#4C4C4C</color>
 </resources>
