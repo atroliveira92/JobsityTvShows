@@ -1,4 +1,4 @@
-package com.jobsity.tvseries.presentation.people
+package com.jobsity.tvseries.presentation.people.list
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.presentation.SearchObserver
@@ -21,7 +20,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class PeopleListFragment(var searchObserver: SearchObserver): Fragment(R.layout.shows_list_view), OnSearchPerform {
 
     private val viewModel: PeopleListViewModel by viewModel()
-    private val adapter = PeopleAdapter()
+    private val adapter =
+        PeopleAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

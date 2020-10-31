@@ -12,6 +12,7 @@ import com.jobsity.tvseries.presentation.SearchObserver
 import com.jobsity.tvseries.presentation.SearchObserver.OnSearchPerform
 import com.jobsity.tvseries.presentation.shows.TvShowAdapter
 import com.jobsity.tvseries.presentation.shows.TvShowAdapter.ITvShowAdapter
+import com.jobsity.tvseries.presentation.shows.info.TvShowInfoActivity
 import com.jobsity.tvseries.util.message.JobsityMessage
 import kotlinx.android.synthetic.main.error_try_again_view.*
 import kotlinx.android.synthetic.main.shows_list_view.*
@@ -46,6 +47,10 @@ class TvShowsSearchFragment(val searchObserver: SearchObserver): Fragment(R.layo
             rvShows.post { adapter.shows = viewState.tvShows }
         })
 
+        viewModel.tvShowClicked.observe(viewLifecycleOwner, Observer {
+            TvShowInfoActivity.startActivity(activity, it)
+        })
+
         btnTryAgain.setOnClickListener {
             viewModel.didClickOnTryAgain()
         }
@@ -65,6 +70,6 @@ class TvShowsSearchFragment(val searchObserver: SearchObserver): Fragment(R.layo
     }
 
     override fun onClick(tvShow: TvShow) {
-
+        viewModel.didClickOnTvShow(tvShow)
     }
 }

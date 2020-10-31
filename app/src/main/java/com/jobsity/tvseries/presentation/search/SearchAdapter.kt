@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.jobsity.tvseries.presentation.SearchObserver
-import com.jobsity.tvseries.presentation.people.PeopleListFragment
+import com.jobsity.tvseries.presentation.people.list.PeopleListFragment
 import com.jobsity.tvseries.presentation.shows.search.TvShowsSearchFragment
 
 class SearchAdapter(private val myContext: Context,
@@ -16,7 +16,9 @@ class SearchAdapter(private val myContext: Context,
     override fun getItem(position: Int): Fragment {
         return when (position) {
             1 -> {
-                PeopleListFragment(searchObserver)
+                PeopleListFragment(
+                    searchObserver
+                )
             }
             else -> TvShowsSearchFragment(searchObserver)
         }

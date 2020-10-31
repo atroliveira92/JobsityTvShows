@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.domain.model.TvShow
 import com.jobsity.tvseries.presentation.shows.TvShowAdapter
+import com.jobsity.tvseries.presentation.shows.info.TvShowInfoActivity
 import com.jobsity.tvseries.util.message.JobsityMessage
 import kotlinx.android.synthetic.main.error_try_again_view.*
 import kotlinx.android.synthetic.main.shows_list_view.*
@@ -44,6 +45,10 @@ class TvShowListFragment : Fragment(R.layout.shows_list_view),
             rvShows.post { adapter.shows = viewState.tvShows }
         })
 
+        viewModel.tvShowClicked.observe(viewLifecycleOwner, Observer {
+            TvShowInfoActivity.startActivity(activity, it)
+        })
+
         btnTryAgain.setOnClickListener {
             viewModel.didClickOnTryAgain()
         }
@@ -54,6 +59,6 @@ class TvShowListFragment : Fragment(R.layout.shows_list_view),
     }
 
     override fun onClick(tvShow: TvShow) {
-
+        viewModel.didClickOnShow(tvShow)
     }
 }

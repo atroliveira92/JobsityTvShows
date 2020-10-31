@@ -1,4 +1,4 @@
-package com.jobsity.tvseries.presentation.people
+package com.jobsity.tvseries.presentation.people.list
 
 import com.jobsity.tvseries.domain.model.Person
 

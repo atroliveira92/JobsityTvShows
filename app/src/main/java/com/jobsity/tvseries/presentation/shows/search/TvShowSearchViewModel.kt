@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jobsity.tvseries.R
+import com.jobsity.tvseries.domain.model.TvShow
 import com.jobsity.tvseries.domain.repository.TvShowRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
 import com.jobsity.tvseries.presentation.shows.TvShowsViewState
@@ -17,6 +18,9 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
     )
     val viewState: LiveData<TvShowsViewState> get() = mutableViewState
     private var searchTerm: String? = null
+
+    private val mutableTvShowClick = MutableLiveData<TvShow>()
+    val tvShowClicked: LiveData<TvShow> get() = mutableTvShowClick
 
     fun search(searchTerm: String?) {
         if (searchTerm.isNullOrEmpty()) {
@@ -63,5 +67,9 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
 
     fun didClickOnTryAgain() {
         search(searchTerm)
+    }
+
+    fun didClickOnTvShow(tvShow: TvShow) {
+        mutableTvShowClick.value = tvShow
     }
 }

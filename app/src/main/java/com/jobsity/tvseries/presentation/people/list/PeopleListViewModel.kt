@@ -1,4 +1,4 @@
-package com.jobsity.tvseries.presentation.people
+package com.jobsity.tvseries.presentation.people.list
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -12,7 +12,9 @@ import com.jobsity.tvseries.util.exception.JobsityException
 class PeopleListViewModel(private val repository: PeopleRepository, application: Application): JobsityViewModel(application) {
 
     private val mutableViewState = MutableLiveData<PeopleListViewState>(
-        PeopleListViewState(isLoadingVisible = false)
+        PeopleListViewState(
+            isLoadingVisible = false
+        )
     )
     val viewState: LiveData<PeopleListViewState> get() = mutableViewState
     private var searchTerm: String? = null
@@ -21,12 +23,18 @@ class PeopleListViewModel(private val repository: PeopleRepository, application:
         if (searchTerm.isNullOrEmpty()) {
             return
         }
-        mutableViewState.value = PeopleListViewState(isLoadingVisible = true)
+        mutableViewState.value =
+            PeopleListViewState(
+                isLoadingVisible = true
+            )
 
         Coroutines.main {
             try {
                 mutableViewState.value = repository.searchPeople(searchTerm).run {
-                    PeopleListViewState(false, this)
+                    PeopleListViewState(
+                        false,
+                        this
+                    )
                 }
             } catch (e: JobsityException) {
                 mutableViewState.value = when (e) {

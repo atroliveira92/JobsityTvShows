@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:contentDescription="@null"
+            android:id="@+id/imgvPoster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="H,16:10"
+            tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/txvHourAndDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:shadowColor="@color/shadow_text_info"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:textColor="@color/primary_text_color"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgvPoster"
+                app:layout_constraintEnd_toStartOf="@+id/txvRating"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                tools:text="7:00pm ● Monday, Tuesday and Saturday" />
+
+            <TextView
+                android:id="@+id/txvGenres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="4dp"
+                android:shadowColor="@color/shadow_text_info"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:textColor="@color/primary_text_color"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txvHourAndDays"
+                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                tools:text="Fantasy ● Commedy" />
+
+            <TextView
+                android:id="@+id/txvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="4dp"
+                android:shadowColor="@color/shadow_text_info"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="5"
+                android:textColor="@color/primary_text_color"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/txvGenres"
+                app:layout_constraintStart_toStartOf="@+id/imgvPoster"
+                tools:text="Game of Thrones (2014)" />
+
+        <ImageView
+            android:id="@+id/imgvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgvPoster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_baseline_star_half_24" />
+
+            <TextView
+                android:id="@+id/txvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:shadowColor="@color/shadow_text_info"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgvRating"
+                app:layout_constraintEnd_toStartOf="@+id/imgvRating"
+                app:layout_constraintTop_toTopOf="@+id/imgvRating"
+                tools:text="9.1" />
+
+            <TextView
+                android:id="@+id/txvSummary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:lineSpacingExtra="2dp"
+                android:paddingBottom="0dp"
+                android:textColor="@color/primary_text_color"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgvPoster" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:id="@+id/spSeasons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:popupBackground="@color/colorPrimary"
+                android:spinnerMode="dropdown"
+                app:backgroundTint="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvSummary"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvEpisodes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spSeasons"
+            tools:listitem="@layout/episode_row"
+            tools:itemCount="10"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:alpha="0.7"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:contentDescription="@string/back"
+        android:id="@+id/imgvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <ImageView
+        android:id="@+id/imgvLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

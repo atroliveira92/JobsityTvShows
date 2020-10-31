@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.jobsity.tvseries.data.PeopleSearchData
 import com.jobsity.tvseries.data.TvShowData
+import com.jobsity.tvseries.data.TvShowEpisodeData
 import com.jobsity.tvseries.data.TvShowSearchData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,6 +12,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TVShowAPI {
@@ -23,6 +25,9 @@ interface TVShowAPI {
 
     @GET("/search/people")
     suspend fun searchPeople(@Query("q") search: String): Response<List<PeopleSearchData>>
+
+    @GET("/shows/{id}/episodes")
+    suspend fun loadEpisodes(@Path("id") id: String): Response<List<TvShowEpisodeData>>
 
     companion object {
         const val BASE_URL = "http://api.tvmaze.com"

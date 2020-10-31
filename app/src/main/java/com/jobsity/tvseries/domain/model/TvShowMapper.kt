@@ -1,6 +1,7 @@
 package com.jobsity.tvseries.domain.model
 
 import com.jobsity.tvseries.data.TvShowData
+import com.jobsity.tvseries.data.TvShowEpisodeData
 import com.jobsity.tvseries.data.TvShowSearchData
 
 object TvShowMapper {
@@ -22,8 +23,29 @@ object TvShowMapper {
         }
     }
 
+    fun mapEpisodesData(tvShowEpisodesData: List<TvShowEpisodeData>, tvShow: TvShow): List<TvShowEpisode> {
+        return tvShowEpisodesData.filter {
+            it.id != null
+            && it.name != null
+            && it.number != null
+            && it.season != null
+
+        }.map {
+            TvShowEpisode(
+                it.id!!,
+                it.name!!,
+                it.season!!,
+                it.number!!,
+                it.image?.medium?: tvShow.posterMedium,
+                it.image?.original?: tvShow.posterHigh,
+                it.summary?.replace("<p>", "")?.replace("</p>", "")
+            )
+        }
+    }
+
     private fun checkTvShow(tvShowData: TvShowData): Boolean {
-        return tvShowData.name != null
+        return tvShowData.id != null
+                && tvShowData.name != null
                 && tvShowData.image != null
                 && tvShowData.schedule != null
                 && tvShowData.schedule!!.days != null
@@ -35,13 +57,14 @@ object TvShowMapper {
     private fun convertToTvShow(tvShowData: TvShowData): TvShow {
         val premierDate = getYearFromPremieredData(tvShowData.premiered)
         return TvShow(
+            tvShowData.id!!,
             tvShowData.name!!,
             tvShowData.image?.original?: tvShowData.image!!.medium,
             tvShowData.image!!.medium!!,
             tvShowData.schedule!!.time!!,
             tvShowData.schedule!!.days!!,
             tvShowData.genres,
-            tvShowData.summary!!,
+            tvShowData.summary!!.replace("<p>", "").replace("</p>", ""),
             tvShowData.rating?.average,
             premierDate
         )

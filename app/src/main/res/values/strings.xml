@@ -11,4 +11,7 @@
     <string name="generic_error_message">Server error. Please contact support</string>
     <string name="people_not_found_message">No people was found with this term</string>
     <string name="error_people_search_message">An error happen when try to search for people. Please try again or contact support</string>
+    <string name="back">back</string>
+    <string name="error_loading_episodes_message">Error when lading episodes. Please try again later</string>
+    <string name="season_">Season %s</string>
 </resources>

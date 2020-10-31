@@ -1,4 +1,4 @@
-package com.jobsity.tvseries.presentation.people
+package com.jobsity.tvseries.presentation.people.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.domain.model.Person
-import com.jobsity.tvseries.presentation.people.PeopleAdapter.PeopleViewHolder
+import com.jobsity.tvseries.presentation.people.list.PeopleAdapter.PeopleViewHolder
 import com.jobsity.tvseries.util.GenericDiffCallback
 import com.jobsity.tvseries.util.extension.loadRoundPhoto
 import kotlinx.android.synthetic.main.person_row.view.*
@@ -19,8 +19,8 @@ class PeopleAdapter: RecyclerView.Adapter<PeopleViewHolder>() {
                 GenericDiffCallback(
                     field,
                     value
-                ) { oldShow: Person, newShow: Person ->
-                    oldShow == newShow
+                ) { oldPerson: Person, newPerson: Person ->
+                    oldPerson == newPerson
                 }
             )
             result.dispatchUpdatesTo(this)

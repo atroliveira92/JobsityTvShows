@@ -1,6 +1,10 @@
 package com.jobsity.tvseries.domain.model
 
+import android.os.Parcel
+import android.os.Parcelable
+
 data class TvShow (
+    val id: Int,
     val name: String,
     val posterHigh: String?,
     val posterMedium: String,
@@ -10,4 +14,45 @@ data class TvShow (
     val summary: String,
     val rating: String?,
     val premier: String?
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.createStringArrayList(),
+        parcel.createStringArrayList(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(name)
+        parcel.writeString(posterHigh)
+        parcel.writeString(posterMedium)
+        parcel.writeString(time)
+        parcel.writeStringList(days)
+        parcel.writeStringList(genre)
+        parcel.writeString(summary)
+        parcel.writeString(rating)
+        parcel.writeString(premier)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<TvShow> {
+        override fun createFromParcel(parcel: Parcel): TvShow {
+            return TvShow(parcel)
+        }
+
+        override fun newArray(size: Int): Array<TvShow?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
