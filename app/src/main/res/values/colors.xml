@@ -12,9 +12,13 @@
     <color name="secondary_text_color">#BDBDBD</color>
     <color name="text_controller">#FFFFFF</color>
     <color name="error_message_background">#DA0303</color>
+    <color name="success_message_background">#4CAF50</color>
     <color name="search_text">#212121</color>
     <color name="search_hint">#4C4C4C</color>
     <color name="tab_bar">#303030</color>
     <color name="shadow_text_info">#000000</color>
     <color name="line_separator">#919090</color>
+    <color name="gradient_end_color">#00ffffff</color>
+    <color name="gradient_start_color">#aa000000</color>
+    <color name="gradient_center_color">#00ffffff</color>
 </resources>

@@ -10,7 +10,15 @@ import com.jobsity.tvseries.R
 
 object JobsityMessage {
 
-    fun showErrorMessage(context: Context?, errorMessage: String) {
+    fun showErrorMessage(context: Context?, message: String) {
+        showSnackBar(context, message, R.color.text_controller, R.color.error_message_background)
+    }
+
+    fun showSuccessMessage(context: Context?, message: String) {
+        showSnackBar(context, message, R.color.text_controller, R.color.success_message_background)
+    }
+
+    private fun showSnackBar(context: Context?, errorMessage: String, textColor: Int, backgroundColor: Int) {
         if (context is Activity) {
             val v = getViewSnackBar(context)
             v?.let {
@@ -22,11 +30,11 @@ object JobsityMessage {
 
                 val textView =
                     snackbar.view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
-                textView.setTextColor(ContextCompat.getColor(snackbar.context, R.color.text_controller))
+                textView.setTextColor(ContextCompat.getColor(snackbar.context, textColor))
                 snackbar.view.setBackgroundColor(
                     ContextCompat.getColor(
                         snackbar.context,
-                        R.color.error_message_background
+                        backgroundColor
                     )
                 )
 

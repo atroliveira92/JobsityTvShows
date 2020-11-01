@@ -9,8 +9,8 @@ import com.jobsity.tvseries.domain.repository.TvShowRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
 import com.jobsity.tvseries.presentation.shows.TvShowsViewState
 import com.jobsity.tvseries.util.coroutine.Coroutines
-import com.jobsity.tvseries.util.exception.JobsityException
-import com.jobsity.tvseries.util.exception.JobsityException.*
+import com.jobsity.tvseries.util.exception.JobsityListException
+import com.jobsity.tvseries.util.exception.JobsityListException.*
 
 class TvShowListViewModel(var repository: TvShowRepository, application: Application): JobsityViewModel(application) {
     private val mutableViewState = MutableLiveData<TvShowsViewState>(
@@ -35,23 +35,23 @@ class TvShowListViewModel(var repository: TvShowRepository, application: Applica
                         isListVisible = true
                     )
                 }
-            } catch (e: JobsityException) {
+            } catch (e: JobsityListException) {
                 mutableViewState.value = when (e) {
-                    is ApiException ->  {
+                    is ApiListException ->  {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isErrorMessage = true,
                             errorMessage = context.getString(R.string.error_load_more_tv_shows_message),
                             isTryAgainVisible = false)
                     }
-                    is NoInternetException -> {
+                    is NoInternetListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isErrorMessage = true,
                             errorMessage = context.getString(R.string.internet_connection_error_message),
                             isTryAgainVisible = false)
                     }
-                    is EmptyDataException -> {
+                    is EmptyDataListException -> {
                         viewState.value!!.copy()
                     }
                 }
@@ -66,23 +66,23 @@ class TvShowListViewModel(var repository: TvShowRepository, application: Applica
                 mutableViewState.value = repository.loadTvShows().run {
                     TvShowsViewState(false,this)
                 }
-            } catch (e: JobsityException) {
+            } catch (e: JobsityListException) {
                 mutableViewState.value = when (e) {
-                    is ApiException -> {
+                    is ApiListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,
                             errorMessage = context.getString(R.string.error_load_tv_shows),
                             isTryAgainVisible = true)
                     }
-                    is NoInternetException -> {
+                    is NoInternetListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,
                             errorMessage = context.getString(R.string.internet_connection_error_message),
                             isTryAgainVisible = true)
                     }
-                    is EmptyDataException -> {
+                    is EmptyDataListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,

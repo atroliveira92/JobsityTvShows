@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="62dp"
+        android:src="@drawable/pink_lock_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvPinNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lock_using_a_pin_number"
+        android:textColor="@color/primary_text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.13999999" />
+
+
+    <EditText
+        android:id="@+id/edtNumber1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/pin_number_edit_text_shape"
+        android:labelFor="@string/first_digit"
+        android:digits="123456789"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:gravity="center"
+        android:nextFocusRight="@id/edtNumber2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/edtNumber2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvPinNumber"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/edtNumber2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/pin_number_edit_text_shape"
+        android:labelFor="@string/second_digit"
+        android:digits="123456789"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:gravity="center"
+        android:nextFocusRight="@id/edtNumber3"
+        app:layout_constraintEnd_toStartOf="@+id/edtNumber3"
+        app:layout_constraintStart_toEndOf="@+id/edtNumber1"
+        app:layout_constraintTop_toBottomOf="@+id/txvPinNumber"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/edtNumber3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/pin_number_edit_text_shape"
+        android:digits="123456789"
+        android:labelFor="@string/third_digit"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:gravity="center"
+        android:nextFocusRight="@id/edtNumber4"
+        app:layout_constraintEnd_toStartOf="@+id/edtNumber4"
+        app:layout_constraintStart_toEndOf="@+id/edtNumber2"
+        app:layout_constraintTop_toBottomOf="@+id/txvPinNumber"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/edtNumber4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/pin_number_edit_text_shape"
+        android:labelFor="@string/fourth_digit"
+        android:digits="123456789"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:maxLength="1"
+        android:gravity="center"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtNumber3"
+        app:layout_constraintTop_toBottomOf="@+id/txvPinNumber"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#2196F3"
+        android:text="@string/save"
+        android:textColor="@color/text_controller"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNumber2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

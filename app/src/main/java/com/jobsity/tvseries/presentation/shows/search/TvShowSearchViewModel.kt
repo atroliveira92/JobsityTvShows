@@ -9,8 +9,8 @@ import com.jobsity.tvseries.domain.repository.TvShowRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
 import com.jobsity.tvseries.presentation.shows.TvShowsViewState
 import com.jobsity.tvseries.util.coroutine.Coroutines
-import com.jobsity.tvseries.util.exception.JobsityException
-import com.jobsity.tvseries.util.exception.JobsityException.*
+import com.jobsity.tvseries.util.exception.JobsityListException
+import com.jobsity.tvseries.util.exception.JobsityListException.*
 
 class TvShowSearchViewModel(private val repository: TvShowRepository, application: Application): JobsityViewModel(application) {
     private val mutableViewState = MutableLiveData<TvShowsViewState>(
@@ -33,9 +33,9 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
                 mutableViewState.value = repository.searchTvShow(searchTerm).run {
                     TvShowsViewState(false, this)
                 }
-            } catch (e: JobsityException) {
+            } catch (e: JobsityListException) {
                 mutableViewState.value = when (e) {
-                    is ApiException -> {
+                    is ApiListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,
@@ -43,7 +43,7 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
                             isTryAgainVisible = true,
                             isTryAgainButtonVisible = true)
                     }
-                    is NoInternetException -> {
+                    is NoInternetListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,
@@ -51,7 +51,7 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
                             isTryAgainVisible = true,
                             isTryAgainButtonVisible = true)
                     }
-                    is EmptyDataException -> {
+                    is EmptyDataListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,

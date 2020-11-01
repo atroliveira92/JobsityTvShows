@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".presentation.shows.info.TvShowInfoActivity" />
         <activity android:name=".presentation.shows.favorites.FavoritesTvShowsActivity" />
+        <activity android:name=".presentation.pin.set.SetPinActivity" />
+        <activity android:name=".presentation.pin.check.CheckPinActivity" />
 
     </application>
 

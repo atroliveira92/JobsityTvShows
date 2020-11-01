@@ -1,7 +1,7 @@
 package com.jobsity.tvseries.domain.network
 
 
-import com.jobsity.tvseries.util.exception.JobsityException.ApiException
+import com.jobsity.tvseries.util.exception.JobsityListException.ApiListException
 import retrofit2.Response
 import java.lang.StringBuilder
 
@@ -19,7 +19,7 @@ abstract class SafeApiRequest {
             message.append("\n")
             message.append("Error code ${response.code()}")
 
-            throw ApiException(message.toString(), response.code())
+            throw ApiListException(message.toString(), response.code())
         }
     }
 }

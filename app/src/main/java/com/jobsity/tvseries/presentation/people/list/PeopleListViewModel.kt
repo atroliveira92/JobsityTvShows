@@ -7,7 +7,7 @@ import com.jobsity.tvseries.R
 import com.jobsity.tvseries.domain.repository.PeopleRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
 import com.jobsity.tvseries.util.coroutine.Coroutines
-import com.jobsity.tvseries.util.exception.JobsityException
+import com.jobsity.tvseries.util.exception.JobsityListException
 
 class PeopleListViewModel(private val repository: PeopleRepository, application: Application): JobsityViewModel(application) {
 
@@ -36,9 +36,9 @@ class PeopleListViewModel(private val repository: PeopleRepository, application:
                         this
                     )
                 }
-            } catch (e: JobsityException) {
+            } catch (e: JobsityListException) {
                 mutableViewState.value = when (e) {
-                    is JobsityException.ApiException -> {
+                    is JobsityListException.ApiListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,
@@ -47,7 +47,7 @@ class PeopleListViewModel(private val repository: PeopleRepository, application:
                             isTryAgainButtonVisible = true
                         )
                     }
-                    is JobsityException.NoInternetException -> {
+                    is JobsityListException.NoInternetListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,
@@ -56,7 +56,7 @@ class PeopleListViewModel(private val repository: PeopleRepository, application:
                             isTryAgainButtonVisible = true
                         )
                     }
-                    is JobsityException.EmptyDataException -> {
+                    is JobsityListException.EmptyDataListException -> {
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             isListVisible = false,

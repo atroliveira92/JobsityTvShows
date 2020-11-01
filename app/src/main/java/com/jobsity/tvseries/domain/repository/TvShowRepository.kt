@@ -7,7 +7,7 @@ import com.jobsity.tvseries.domain.model.TvShowEpisode
 import com.jobsity.tvseries.domain.model.TvShowMapper
 import com.jobsity.tvseries.domain.network.SafeApiRequest
 import com.jobsity.tvseries.domain.network.TVShowAPI
-import com.jobsity.tvseries.util.exception.JobsityException.EmptyDataException
+import com.jobsity.tvseries.util.exception.JobsityListException.EmptyDataListException
 
 class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvShowDao): SafeApiRequest() {
     private var page = 0
@@ -18,7 +18,7 @@ class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvS
         ended = false
         val list =  loadTvShows(page)
         if (list.isEmpty()) {
-            throw EmptyDataException("tv show list is empty")
+            throw EmptyDataListException("tv show list is empty")
         }
 
         return list
@@ -42,7 +42,7 @@ class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvS
         val list = TvShowMapper.mapTvShowSearchData(listData)
 
         if (list.isEmpty()) {
-            throw EmptyDataException("list is empty")
+            throw EmptyDataListException("list is empty")
         }
 
         return list
@@ -53,7 +53,7 @@ class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvS
         val list = TvShowMapper.mapEpisodesData(listData, tvShow)
 
         if (list.isEmpty()) {
-            throw EmptyDataException("list is empty")
+            throw EmptyDataListException("list is empty")
         }
 
         return list

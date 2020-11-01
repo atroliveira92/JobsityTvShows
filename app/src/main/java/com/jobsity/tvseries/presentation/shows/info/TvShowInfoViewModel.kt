@@ -9,7 +9,7 @@ import com.jobsity.tvseries.domain.model.TvShowEpisode
 import com.jobsity.tvseries.domain.repository.TvShowRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
 import com.jobsity.tvseries.util.coroutine.Coroutines
-import com.jobsity.tvseries.util.exception.JobsityException
+import com.jobsity.tvseries.util.exception.JobsityListException
 
 class TvShowInfoViewModel(private val repository: TvShowRepository, application: Application): JobsityViewModel(application) {
 
@@ -48,21 +48,21 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
                     tvShowInfo.seasons = getSeasons(seasons)
                     tvShowInfo
                 }
-            } catch (e: JobsityException) {
+            } catch (e: JobsityListException) {
                 mutableViewState.value = when (e) {
-                    is JobsityException.ApiException -> {
+                    is JobsityListException.ApiListException -> {
                         viewState.value!!.copy(
                             errorMessage = context.getString(R.string.error_loading_episodes_message),
                             isShowError = true
                         )
                     }
-                    is JobsityException.NoInternetException -> {
+                    is JobsityListException.NoInternetListException -> {
                         viewState.value!!.copy(
                             errorMessage = context.getString(R.string.internet_connection_error_message),
                             isShowError = true
                         )
                     }
-                    is JobsityException.EmptyDataException -> {
+                    is JobsityListException.EmptyDataListException -> {
                         viewState.value!!.copy(
                             errorMessage = context.getString(R.string.error_loading_episodes_message),
                             isShowError = true

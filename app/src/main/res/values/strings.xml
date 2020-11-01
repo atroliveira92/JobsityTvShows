@@ -18,4 +18,16 @@
     <string name="list_of_episodes">List of episodes</string>
     <string name="no_favorites_message">You have no favorites Tv shows!</string>
     <string name="search_in_favorites">Search in your favorite list</string>
+    <string name="first_digit">First Digit</string>
+    <string name="second_digit">Second digit</string>
+    <string name="third_digit">Third digit</string>
+    <string name="fourth_digit">Fourth digit</string>
+    <string name="save">Save</string>
+    <string name="fields_cannot_be_empty">Fields cannot be empty</string>
+    <string name="pin_must_have_all_4_digits">Pin must have all 4 digits</string>
+    <string name="pin_number_set_message">Your pin number was set</string>
+    <string name="done">Done</string>
+    <string name="wrong_pin_number">Wrong pin number.Try again!</string>
+    <string name="lock_using_a_pin_number">Lock using a PIN number</string>
+    <string name="set_pin_number_to_unlock_">Set your Pin Number to unlock \n%s</string>
 </resources>

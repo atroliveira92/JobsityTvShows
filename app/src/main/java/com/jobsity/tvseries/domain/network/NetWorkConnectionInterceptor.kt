@@ -5,8 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import com.jobsity.tvseries.R
-import com.jobsity.tvseries.util.exception.JobsityException
-import com.jobsity.tvseries.util.exception.JobsityException.NoInternetException
+import com.jobsity.tvseries.util.exception.JobsityListException.NoInternetListException
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -17,7 +16,7 @@ class NetWorkConnectionInterceptor(context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
         if (!isInternetAvailable()) {
-             throw NoInternetException(applicationContext.getString(R.string.no_internet_connection_message))
+             throw NoInternetListException(applicationContext.getString(R.string.no_internet_connection_message))
         }
 
         return chain.proceed(chain.request())

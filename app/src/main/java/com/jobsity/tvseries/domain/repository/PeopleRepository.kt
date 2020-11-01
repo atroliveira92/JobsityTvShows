@@ -4,7 +4,7 @@ import com.jobsity.tvseries.domain.model.Person
 import com.jobsity.tvseries.domain.model.PersonMapper
 import com.jobsity.tvseries.domain.network.SafeApiRequest
 import com.jobsity.tvseries.domain.network.TVShowAPI
-import com.jobsity.tvseries.util.exception.JobsityException
+import com.jobsity.tvseries.util.exception.JobsityListException
 
 class PeopleRepository(private val api: TVShowAPI): SafeApiRequest() {
 
@@ -13,7 +13,7 @@ class PeopleRepository(private val api: TVShowAPI): SafeApiRequest() {
         val list = PersonMapper.map(listData)
 
         if (list.isEmpty()) {
-            throw JobsityException.EmptyDataException("data is empty")
+            throw JobsityListException.EmptyDataListException("data is empty")
         }
 
         return list
