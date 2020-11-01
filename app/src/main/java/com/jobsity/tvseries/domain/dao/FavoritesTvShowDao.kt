@@ -9,7 +9,7 @@ import com.jobsity.tvseries.data.FavoritesTvShowEntity
 @Dao
 interface FavoritesTvShowDao {
 
-    @Query("SELECT * FROM FavoritesTVShow")
+    @Query("SELECT * FROM FavoritesTVShow ORDER BY name ASC")
     suspend fun loadAll(): List<FavoritesTvShowEntity>
 
     @Query("SELECT * FROM FavoritesTVShow WHERE id = :id")

@@ -13,7 +13,7 @@ import com.jobsity.tvseries.presentation.shows.list.TvShowListFragment
 import com.jobsity.tvseries.util.extension.hideKeyboard
 import com.mancj.materialsearchbar.MaterialSearchBar
 import kotlinx.android.synthetic.main.main_activity.*
-import kotlinx.android.synthetic.main.menu_view.*
+import kotlinx.android.synthetic.main.side_menu_view.*
 
 
 class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListener {

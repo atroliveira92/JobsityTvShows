@@ -3,4 +3,5 @@
     <dimen name="toolbar_height">48dp</dimen>
     <dimen name="text_size_toobar">20sp</dimen>
     <dimen name="margin_tv_show_row">2dp</dimen>
+    <dimen name="min_clickable_height">48dp</dimen>
 </resources>

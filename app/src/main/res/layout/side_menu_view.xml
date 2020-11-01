@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/txvFavorites"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/min_clickable_height"
             android:gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -30,7 +30,6 @@
             android:textColor="@color/white"
             android:drawablePadding="16dp"
             app:drawableStartCompat="@drawable/ic_baseline_favorite_border_24"
-            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
             app:layout_constraintStart_toStartOf="parent" />
 
         <View
@@ -41,7 +40,7 @@
         <TextView
             android:id="@+id/txvSetPin"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/min_clickable_height"
             android:gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -50,7 +49,6 @@
             android:textColor="@color/white"
             android:drawablePadding="16dp"
             app:drawableStartCompat="@drawable/ic_baseline_lock_24"
-            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="297dp" />
 
@@ -62,7 +60,7 @@
         <TextView
             android:id="@+id/txvAbout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/min_clickable_height"
             android:gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -71,7 +69,6 @@
             android:textColor="@color/white"
             android:drawablePadding="16dp"
             app:drawableStartCompat="@drawable/ic_baseline_info_24"
-            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="297dp" />
 
