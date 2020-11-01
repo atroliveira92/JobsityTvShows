@@ -143,24 +143,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvSummary"/>
 
+            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:id="@+id/txvEpisodes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text_color"
+                android:text="@string/list_of_episodes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spSeasons"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvEpisodes"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:nestedScrollingEnabled="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spSeasons"
-            tools:listitem="@layout/episode_row"
-            tools:itemCount="10"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEpisodes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvEpisodes"
+                tools:listitem="@layout/episode_row"
+                tools:itemCount="10"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <View

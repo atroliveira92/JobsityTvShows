@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.shows.info.TvShowInfoActivity" />
+        <activity android:name=".presentation.shows.favorites.FavoritesTvShowsActivity" />
 
     </application>
 

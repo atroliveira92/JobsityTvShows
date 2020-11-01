@@ -65,9 +65,7 @@ class TvShowsSearchFragment(val searchObserver: SearchObserver): Fragment(R.layo
         viewModel.search(value)
     }
 
-    override fun onReachLastItem() {
-
-    }
+    override fun onReachLastItem() {}
 
     override fun onClick(tvShow: TvShow) {
         viewModel.didClickOnTvShow(tvShow)

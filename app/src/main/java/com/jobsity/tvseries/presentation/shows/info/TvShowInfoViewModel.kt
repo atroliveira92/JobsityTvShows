@@ -20,8 +20,10 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
     val episodeClick: LiveData<TvShowEpisode> get() = mutableEpisodeClick
 
     private var seasons = mapOf<Int, List<TvShowEpisode>>()
+    private var tvShow: TvShow? = null
 
     fun init(tvShow: TvShow) {
+        this.tvShow = tvShow
         mutableViewState.value = TvShowInfoViewState(
             tvShow.name,
             tvShow.posterHigh?: tvShow.posterMedium,
@@ -129,7 +131,15 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
     }
 
     fun didClickOnFavorite() {
-        mutableViewState.value = viewState.value!!.copy(isFavorite = !viewState.value!!.isFavorite)
+        if (tvShow == null) {
+            return
+        }
+
+        Coroutines.main {
+            repository.insertToFavorites(tvShow!!)
+            mutableViewState.value = viewState.value!!.copy(isFavorite = !viewState.value!!.isFavorite)
+        }
+
     }
 }
 

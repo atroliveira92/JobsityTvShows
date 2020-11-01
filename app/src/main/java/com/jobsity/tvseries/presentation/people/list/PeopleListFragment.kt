@@ -64,5 +64,4 @@ class PeopleListFragment(var searchObserver: SearchObserver): Fragment(R.layout.
     override fun onSearch(value: String?) {
         viewModel.search(value)
     }
-
 }

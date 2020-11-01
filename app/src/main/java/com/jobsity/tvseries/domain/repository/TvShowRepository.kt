@@ -1,15 +1,15 @@
 package com.jobsity.tvseries.domain.repository
 
-import com.jobsity.tvseries.data.TvShowSearchData
+import com.jobsity.tvseries.data.FavoritesTvShowEntity
+import com.jobsity.tvseries.domain.dao.FavoritesTvShowDao
 import com.jobsity.tvseries.domain.model.TvShow
 import com.jobsity.tvseries.domain.model.TvShowEpisode
 import com.jobsity.tvseries.domain.model.TvShowMapper
 import com.jobsity.tvseries.domain.network.SafeApiRequest
 import com.jobsity.tvseries.domain.network.TVShowAPI
-import com.jobsity.tvseries.util.exception.JobsityException
 import com.jobsity.tvseries.util.exception.JobsityException.EmptyDataException
 
-class TvShowRepository(private val api: TVShowAPI): SafeApiRequest() {
+class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvShowDao): SafeApiRequest() {
     private var page = 0
     private var ended = false
 
@@ -57,6 +57,27 @@ class TvShowRepository(private val api: TVShowAPI): SafeApiRequest() {
         }
 
         return list
+    }
+
+    @Synchronized suspend fun insertToFavorites(tvShow: TvShow) {
+        val tvShowEntity = FavoritesTvShowEntity(
+            tvShow.id,
+            tvShow.name,
+            tvShow.posterHigh,
+            tvShow.posterMedium,
+            tvShow.time,
+            tvShow.days,
+            tvShow.genre,
+            tvShow.summary,
+            tvShow.rating,
+            tvShow.premier)
+
+        dao.insert(tvShowEntity)
+    }
+
+    suspend fun loadFavorites(): List<TvShow> {
+        val list = dao.loadAll()
+        return TvShowMapper.mapFavoritesToTvShoList(list)
     }
 
     private suspend fun loadTvShows(page: Int): List<TvShow> {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_separator"/>
+
+        <TextView
+            android:id="@+id/txvFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Favorites"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:drawablePadding="16dp"
+            app:drawableStartCompat="@drawable/ic_baseline_favorite_border_24"
+            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_separator"/>
+
+        <TextView
+            android:id="@+id/txvSetPin"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Set Pin"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:drawablePadding="16dp"
+            app:drawableStartCompat="@drawable/ic_baseline_lock_24"
+            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="297dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_separator"/>
+
+        <TextView
+            android:id="@+id/txvAbout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="About"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:drawablePadding="16dp"
+            app:drawableStartCompat="@drawable/ic_baseline_info_24"
+            android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="297dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_separator"/>
+
+    </LinearLayout>
+</RelativeLayout>

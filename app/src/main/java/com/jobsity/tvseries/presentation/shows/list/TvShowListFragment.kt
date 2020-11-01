@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.shows_list_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class TvShowListFragment : Fragment(R.layout.shows_list_view),
+class TvShowListFragment: Fragment(R.layout.shows_list_view),
     TvShowAdapter.ITvShowAdapter {
 
     private val viewModel: TvShowListViewModel by viewModel()

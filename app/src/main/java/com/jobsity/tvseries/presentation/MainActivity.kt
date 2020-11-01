@@ -1,16 +1,18 @@
 package com.jobsity.tvseries.presentation
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.presentation.search.SearchFragment
+import com.jobsity.tvseries.presentation.shows.favorites.FavoritesTvShowsActivity
 import com.jobsity.tvseries.presentation.shows.list.TvShowListFragment
 import com.jobsity.tvseries.util.extension.hideKeyboard
 import com.mancj.materialsearchbar.MaterialSearchBar
 import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.android.synthetic.main.menu_view.*
 
 
 class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListener {
@@ -32,6 +34,14 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
                         TvShowListFragment()
                     )
                     .commitNow()
+        }
+
+        imgvMenu.setOnClickListener {
+            dlMain.openDrawer(GravityCompat.START)
+        }
+
+        txvFavorites.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FavoritesTvShowsActivity::class.java))
         }
     }
 

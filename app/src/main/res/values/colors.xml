@@ -16,4 +16,5 @@
     <color name="search_hint">#4C4C4C</color>
     <color name="tab_bar">#303030</color>
     <color name="shadow_text_info">#000000</color>
+    <color name="line_separator">#919090</color>
 </resources>

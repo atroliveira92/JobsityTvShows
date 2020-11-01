@@ -15,4 +15,7 @@
     <string name="error_loading_episodes_message">Error when lading episodes. Please try again later</string>
     <string name="season_">Season %s</string>
     <string name="episode_">Episode %s</string>
+    <string name="list_of_episodes">List of episodes</string>
+    <string name="no_favorites_message">You have no favorites Tv shows!</string>
+    <string name="search_in_favorites">Search in your favorite list</string>
 </resources>

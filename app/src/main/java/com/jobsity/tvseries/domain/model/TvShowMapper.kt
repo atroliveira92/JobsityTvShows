@@ -1,5 +1,6 @@
 package com.jobsity.tvseries.domain.model
 
+import com.jobsity.tvseries.data.FavoritesTvShowEntity
 import com.jobsity.tvseries.data.TvShowData
 import com.jobsity.tvseries.data.TvShowEpisodeData
 import com.jobsity.tvseries.data.TvShowSearchData
@@ -23,6 +24,23 @@ object TvShowMapper {
         }
     }
 
+
+    fun mapFavoritesToTvShoList(favorites: List<FavoritesTvShowEntity>): List<TvShow> {
+        return favorites.map {
+            TvShow(
+                it.id,
+                it.name,
+                it.posterHigh,
+                it.posterMedium,
+                it.time,
+                it.days,
+                it.genre,
+                it.summary,
+                it.rating,
+                it.premier)
+        }
+    }
+
     fun mapEpisodesData(tvShowEpisodesData: List<TvShowEpisodeData>, tvShow: TvShow): List<TvShowEpisode> {
         return tvShowEpisodesData.filter {
             it.id != null
@@ -42,6 +60,7 @@ object TvShowMapper {
             )
         }
     }
+
 
     private fun checkTvShow(tvShowData: TvShowData): Boolean {
         return tvShowData.id != null

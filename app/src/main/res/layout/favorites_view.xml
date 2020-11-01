@@ -5,6 +5,31 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        style="@style/MaterialSearchBarDark"
+        app:mt_speechMode="false"
+        app:mt_hint="@string/search_in_favorites"
+        app:mt_searchIconTint="@color/toolbar_controllers"
+        app:mt_backIconTint="@color/toolbar_controllers"
+        app:mt_clearIconTint="@color/toolbar_controllers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:id="@+id/searchBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:contentDescription="@string/back"
+        android:id="@+id/imgvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:src="@drawable/ic_arrow_left_black"
+        app:tint="@color/toolbar_controllers"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShows"
         android:layout_width="0dp"
@@ -16,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     <ProgressBar
         android:id="@+id/pgShows"
