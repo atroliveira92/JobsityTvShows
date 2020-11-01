@@ -2,6 +2,7 @@ package com.jobsity.tvseries.presentation.pin.set
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import com.jobsity.tvseries.R
@@ -51,6 +52,9 @@ class SetPinActivity: AppCompatActivity(R.layout.pin_view) {
                 hideKeyboard()
                 JobsityMessage.showSuccessMessage(this, it.successMessage)
             }
+
+            btnSetFingerprint.isVisible = it.showFingerPrintButton
+            txvOr.isVisible = it.showFingerPrintButton
         })
     }
 }

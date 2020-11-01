@@ -4,5 +4,6 @@ data class PinViewState (
     val showError: Boolean = false,
     val errorMessage: String = "",
     val showSuccess: Boolean = false,
-    val successMessage: String = ""
+    val successMessage: String = "",
+    val showFingerPrintButton: Boolean = false
 )

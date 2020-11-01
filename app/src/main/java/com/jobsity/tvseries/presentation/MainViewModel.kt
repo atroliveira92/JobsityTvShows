@@ -13,7 +13,7 @@ class MainViewModel(private val repository: SecurityRepository): ViewModel() {
 
     init {
         Coroutines.main {
-            if (repository.checkIfHasPinNumber()) {
+            if (repository.checkIfHasSecurityImplementation()) {
                 goToCheckPin.call()
             }
         }

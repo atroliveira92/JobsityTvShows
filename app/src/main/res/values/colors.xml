@@ -21,4 +21,5 @@
     <color name="gradient_end_color">#00ffffff</color>
     <color name="gradient_start_color">#aa000000</color>
     <color name="gradient_center_color">#00ffffff</color>
+    <color name="save_button">#2196F3</color>
 </resources>

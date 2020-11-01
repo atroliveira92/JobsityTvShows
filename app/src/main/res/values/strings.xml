@@ -30,4 +30,5 @@
     <string name="wrong_pin_number">Wrong pin number.Try again!</string>
     <string name="lock_using_a_pin_number">Lock using a PIN number</string>
     <string name="set_pin_number_to_unlock_">Set your Pin Number to unlock \n%s</string>
+    <string name="or">Or</string>
 </resources>
