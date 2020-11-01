@@ -24,19 +24,23 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
 
     fun init(tvShow: TvShow) {
         this.tvShow = tvShow
-        mutableViewState.value = TvShowInfoViewState(
-            tvShow.name,
-            tvShow.posterHigh?: tvShow.posterMedium,
-            false,
-            !tvShow.rating.isNullOrEmpty(),
-            tvShow.rating?: "",
-            getHourAndDate(tvShow),
-            getGenres(tvShow),
-            tvShow.summary,
-            isShowError = false)
 
         Coroutines.main {
             try {
+                tvShow.isFavorite = repository.checkIfFavorite(tvShow.id)
+
+                mutableViewState.value = TvShowInfoViewState(
+                    tvShow.name,
+                    tvShow.posterHigh?: tvShow.posterMedium,
+                    tvShow.isFavorite,
+                    !tvShow.rating.isNullOrEmpty(),
+                    tvShow.rating?: "",
+                    getHourAndDate(tvShow),
+                    getGenres(tvShow),
+                    tvShow.summary,
+                    isShowError = false,
+                    enableFavoriteClick = true)
+
                 mutableViewState.value = repository.loadTvShowEpisodes(tvShow).run {
                     val tvShowInfo = viewState.value!!.copy()
                     seasons = this.groupBy{ it.season }
@@ -131,15 +135,16 @@ class TvShowInfoViewModel(private val repository: TvShowRepository, application:
     }
 
     fun didClickOnFavorite() {
-        if (tvShow == null) {
-            return
+        tvShow?.let {
+            Coroutines.main {
+                repository.changeFavoriteTvShowStatus(it)
+                mutableViewState.value = viewState.value!!.copy(isFavorite = it.isFavorite)
+            }
         }
+    }
 
-        Coroutines.main {
-            repository.insertToFavorites(tvShow!!)
-            mutableViewState.value = viewState.value!!.copy(isFavorite = !viewState.value!!.isFavorite)
-        }
-
+    fun getCurrentTvShow(): TvShow? {
+        return tvShow
     }
 }
 
@@ -155,5 +160,6 @@ data class TvShowInfoViewState(
     var episodes: List<TvShowEpisode> = emptyList(),
     var seasons: List<String> = emptyList(),
     val isShowError: Boolean = false,
-    val errorMessage: String = ""
+    val errorMessage: String = "",
+    var enableFavoriteClick: Boolean = false
 )

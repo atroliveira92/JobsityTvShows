@@ -48,7 +48,7 @@ class TvShowsSearchFragment(val searchObserver: SearchObserver): Fragment(R.layo
         })
 
         viewModel.tvShowClicked.observe(viewLifecycleOwner, Observer {
-            TvShowInfoActivity.startActivity(activity, it)
+            TvShowInfoActivity.startActivityForResult(activity, it)
         })
 
         btnTryAgain.setOnClickListener {

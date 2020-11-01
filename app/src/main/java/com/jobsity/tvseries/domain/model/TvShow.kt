@@ -13,7 +13,8 @@ data class TvShow (
     val genre: List<String>?,
     val summary: String,
     val rating: String?,
-    val premier: String?
+    val premier: String?,
+    var isFavorite: Boolean = false
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -25,7 +26,8 @@ data class TvShow (
         parcel.createStringArrayList(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readByte() != 0.toByte()
     ) {
     }
 
@@ -40,6 +42,7 @@ data class TvShow (
         parcel.writeString(summary)
         parcel.writeString(rating)
         parcel.writeString(premier)
+        parcel.writeByte(if (isFavorite) 1 else 0)
     }
 
     override fun describeContents(): Int {
@@ -56,3 +59,4 @@ data class TvShow (
         }
     }
 }
+

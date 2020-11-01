@@ -12,6 +12,9 @@ interface FavoritesTvShowDao {
     @Query("SELECT * FROM FavoritesTVShow")
     suspend fun loadAll(): List<FavoritesTvShowEntity>
 
+    @Query("SELECT * FROM FavoritesTVShow WHERE id = :id")
+    suspend fun loadFromId(id: Int): FavoritesTvShowEntity?
+
     @Insert
     suspend fun insert(favoritesTvShowEntity: FavoritesTvShowEntity)
 

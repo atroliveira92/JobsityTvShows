@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.presentation.search.SearchFragment
 import com.jobsity.tvseries.presentation.shows.favorites.FavoritesTvShowsActivity
@@ -23,9 +24,7 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
         setContentView(R.layout.main_activity)
 
         searchBar.setSpeechMode(false)
-        //enable searchbar callbacks
         searchBar.setOnSearchActionListener(this)
-        //restore last queries from disk
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -48,6 +47,9 @@ class MainActivity : AppCompatActivity(), MaterialSearchBar.OnSearchActionListen
     override fun onButtonClicked(buttonCode: Int) { }
 
     override fun onSearchStateChanged(enabled: Boolean) {
+        imgvMenu.isVisible = !enabled
+        txvTitle.isVisible = !enabled
+
         if (enabled) {
             supportFragmentManager
                 .beginTransaction()

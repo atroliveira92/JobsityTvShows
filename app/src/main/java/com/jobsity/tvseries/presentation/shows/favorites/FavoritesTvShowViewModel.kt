@@ -1,6 +1,8 @@
 package com.jobsity.tvseries.presentation.shows.favorites
 
+import android.app.Activity
 import android.app.Application
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jobsity.tvseries.R
@@ -8,6 +10,7 @@ import com.jobsity.tvseries.domain.model.TvShow
 import com.jobsity.tvseries.domain.repository.TvShowRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
 import com.jobsity.tvseries.presentation.shows.TvShowsViewState
+import com.jobsity.tvseries.presentation.shows.info.TvShowInfoActivity
 import com.jobsity.tvseries.util.coroutine.Coroutines
 
 class FavoritesTvShowViewModel(private val repository: TvShowRepository,
@@ -21,14 +24,14 @@ class FavoritesTvShowViewModel(private val repository: TvShowRepository,
     private val mutableTvShowClick = MutableLiveData<TvShow>()
     val tvShowClicked: LiveData<TvShow> get() = mutableTvShowClick
 
-    private var list = listOf<TvShow>()
+    private var list = mutableListOf<TvShow>()
 
     init {
         mutableViewState.value = TvShowsViewState(isLoadingVisible = true)
 
         Coroutines.main {
             try {
-                list = repository.loadFavorites()
+                list = repository.loadFavorites().toMutableList()
                 if (list.isEmpty()) {
                     mutableViewState.value = TvShowsViewState(
                         isLoadingVisible = false,
@@ -38,7 +41,7 @@ class FavoritesTvShowViewModel(private val repository: TvShowRepository,
                         isTryAgainButtonVisible = false
                     )
                 } else {
-                    mutableViewState.value = list.run {
+                    mutableViewState.value = list.toMutableList().run {
                         TvShowsViewState(false, this)
                     }
                 }
@@ -70,5 +73,24 @@ class FavoritesTvShowViewModel(private val repository: TvShowRepository,
 
     fun didClickOnTvShow(tvShow: TvShow) {
         mutableTvShowClick.value = tvShow
+    }
+
+    fun handleFavoriteStatus(resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            val tvShow = data?.getParcelableExtra<TvShow>(TvShowInfoActivity.TVSHOW_ARG)
+
+            tvShow?.let {
+                if (!it.isFavorite) {
+                    val currentList = viewState.value!!.tvShows.toMutableList()
+                    currentList.remove(it)
+                    
+                    if (currentList != list) {
+                        list.remove(it)
+                    }
+
+                    mutableViewState.value = viewState.value!!.copy(tvShows = currentList)
+                }
+            }
+        }
     }
 }

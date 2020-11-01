@@ -1,5 +1,6 @@
 package com.jobsity.tvseries.presentation.shows.favorites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -52,7 +53,7 @@ class FavoritesTvShowsActivity: AppCompatActivity(R.layout.favorites_view), ITvS
         })
 
         viewModel.tvShowClicked.observe(this, Observer {
-            TvShowInfoActivity.startActivity(this, it)
+            TvShowInfoActivity.startActivityForResult(this, it)
         })
 
         imgvBack.setOnClickListener {
@@ -77,5 +78,12 @@ class FavoritesTvShowsActivity: AppCompatActivity(R.layout.favorites_view), ITvS
 
     override fun onSearchConfirmed(text: CharSequence?) {
         viewModel.search(text.toString())
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == TvShowInfoActivity.TVSHOW_INFO_REQUEST_CODE) {
+            viewModel.handleFavoriteStatus(resultCode, data)
+        }
     }
 }

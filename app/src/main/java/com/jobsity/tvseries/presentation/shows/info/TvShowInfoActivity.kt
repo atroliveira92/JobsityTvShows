@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.jobsity.tvseries.R
 import com.jobsity.tvseries.domain.model.TvShow
 import com.jobsity.tvseries.domain.model.TvShowEpisode
+import com.jobsity.tvseries.presentation.shows.favorites.FavoritesTvShowsActivity
 import com.jobsity.tvseries.presentation.shows.info.EpisodesAdapter.IEpisodeAdapter
 import com.jobsity.tvseries.util.extension.favorite
 import com.jobsity.tvseries.util.extension.htmlText
@@ -24,13 +25,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class TvShowInfoActivity: AppCompatActivity(), IEpisodeAdapter {
 
     companion object {
+        const val TVSHOW_INFO_REQUEST_CODE = 8374
         const val TVSHOW_ARG = "tvshow_arg"
-
-        fun startActivity(activity: Activity?, tvShow: TvShow) {
+        private const val FAVORITE_STATUS_ARGS = "favorite_status"
+        fun startActivityForResult(activity: Activity?, tvShow: TvShow) {
             activity?.let {
                 val intent = Intent(activity, TvShowInfoActivity::class.java)
                 intent.putExtra(TVSHOW_ARG, tvShow)
-                activity.startActivity(intent)
+                activity.startActivityForResult(intent, TVSHOW_INFO_REQUEST_CODE)
             }
         }
     }
@@ -64,6 +66,8 @@ class TvShowInfoActivity: AppCompatActivity(), IEpisodeAdapter {
             txvSummary.htmlText(it.summary)
             imgvLike.favorite(it.isFavorite)
             imgvEpisode.loadPhoto(it.posterUrl)
+            imgvLike.isEnabled = it.enableFavoriteClick
+            imgvLike.alpha = if (it.enableFavoriteClick) 1.0f else 0.5f
         })
 
         viewModel.episodeClick.observe(this, Observer {
@@ -94,5 +98,12 @@ class TvShowInfoActivity: AppCompatActivity(), IEpisodeAdapter {
 
     override fun onClickEpisode(episode: TvShowEpisode) {
         viewModel.didClickOnEpisode(episode)
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent()
+        intent.putExtra(TVSHOW_ARG, viewModel.getCurrentTvShow())
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 }

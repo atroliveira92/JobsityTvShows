@@ -59,7 +59,7 @@ class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvS
         return list
     }
 
-    @Synchronized suspend fun insertToFavorites(tvShow: TvShow) {
+    @Synchronized suspend fun changeFavoriteTvShowStatus(tvShow: TvShow) {
         val tvShowEntity = FavoritesTvShowEntity(
             tvShow.id,
             tvShow.name,
@@ -72,7 +72,19 @@ class TvShowRepository(private val api: TVShowAPI, private val dao: FavoritesTvS
             tvShow.rating,
             tvShow.premier)
 
-        dao.insert(tvShowEntity)
+        if (tvShow.isFavorite) {
+            dao.delete(tvShowEntity)
+        } else {
+            dao.insert(tvShowEntity)
+        }
+
+        tvShow.isFavorite = !tvShow.isFavorite
+    }
+
+    suspend fun checkIfFavorite(id: Int): Boolean {
+        val favorite = dao.loadFromId(id)
+
+        return favorite != null
     }
 
     suspend fun loadFavorites(): List<TvShow> {

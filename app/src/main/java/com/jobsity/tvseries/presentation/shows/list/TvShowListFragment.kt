@@ -46,7 +46,7 @@ class TvShowListFragment: Fragment(R.layout.shows_list_view),
         })
 
         viewModel.tvShowClicked.observe(viewLifecycleOwner, Observer {
-            TvShowInfoActivity.startActivity(activity, it)
+            TvShowInfoActivity.startActivityForResult(activity, it)
         })
 
         btnTryAgain.setOnClickListener {
