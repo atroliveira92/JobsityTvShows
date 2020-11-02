@@ -19,20 +19,8 @@ To install this app in a Android device:
 - Allow users to search series by name. **(Done)**
 - The listing and search views must show at least the name and poster image of the 
 series. **(Done)**
-- After clicking on a series, the application should show the details of the series, showing
-the following information: **(Done)**
-  -Name
-  -Poster
-  -Days and time during which the series airs
-  -Genres
-  -Summary
-  -List of episodes separated by season
-- After clicking on an episode, the application should show the episode’s information, including: **(Done)**
-  -Name
-  -Number
-  -Season
-  -Summary
-  -Image, if there is one
+- After clicking on a series, the application should show the details of the series **(Done)**
+- After clicking on an episode, the application should show the episode’s information: **(Done)**
 
 **Bonus (Optional)**
 -Allow the user to set a PIN number to secure the application and prevent unauthorized users. **(Done)**
@@ -42,9 +30,5 @@ the following information: **(Done)**
 -Allow the user to browse their favorite series in alphabetical order, and click on one to
 see its details. **(Done)**
 - Create a people search by listing the name and image of the person. **(Done)**
-- After clicking on a person, the application should show the details of that person, such
-as: **(Done)**
-  -Name
-  -Image
-  -Series they have participated in, with a link to the series details.
+- After clicking on a person, the application should show the details of that person **(Done)**
 
