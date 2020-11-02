@@ -2,10 +2,7 @@ package com.jobsity.tvseries.domain.network
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
-import com.jobsity.tvseries.data.PeopleSearchData
-import com.jobsity.tvseries.data.TvShowData
-import com.jobsity.tvseries.data.TvShowEpisodeData
-import com.jobsity.tvseries.data.TvShowSearchData
+import com.jobsity.tvseries.data.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -28,6 +25,9 @@ interface TVShowAPI {
 
     @GET("/shows/{id}/episodes")
     suspend fun loadEpisodes(@Path("id") id: String): Response<List<TvShowEpisodeData>>
+
+    @GET("/people/{id}/castcredits?embed=show")
+    suspend fun loadPersonShows(@Path("id") id: String): Response<List<PeopleCastCreditsData>>
 
     companion object {
         const val BASE_URL = "http://api.tvmaze.com"

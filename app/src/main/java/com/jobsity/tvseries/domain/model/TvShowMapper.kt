@@ -1,9 +1,6 @@
 package com.jobsity.tvseries.domain.model
 
-import com.jobsity.tvseries.data.FavoritesTvShowEntity
-import com.jobsity.tvseries.data.TvShowData
-import com.jobsity.tvseries.data.TvShowEpisodeData
-import com.jobsity.tvseries.data.TvShowSearchData
+import com.jobsity.tvseries.data.*
 
 object TvShowMapper {
     fun mapTvShowData(tvShowsData: List<TvShowData>): List<TvShow> {
@@ -38,6 +35,15 @@ object TvShowMapper {
                 it.summary,
                 it.rating,
                 it.premier)
+        }
+    }
+
+    fun mapEmbeddedShowLists(embeddedShows: List<PeopleCastCreditsData>): List<TvShow> {
+        return embeddedShows.filter {
+            it._embedded?.show != null
+            && checkTvShow(tvShowData = it._embedded.show)
+        }.map {
+            convertToTvShow(it._embedded!!.show!!)
         }
     }
 

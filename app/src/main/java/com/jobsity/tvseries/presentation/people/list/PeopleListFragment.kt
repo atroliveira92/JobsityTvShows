@@ -8,20 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jobsity.tvseries.R
+import com.jobsity.tvseries.domain.model.Person
 import com.jobsity.tvseries.presentation.SearchObserver
 import com.jobsity.tvseries.presentation.SearchObserver.*
+import com.jobsity.tvseries.presentation.people.info.PeopleInfoActivity
+import com.jobsity.tvseries.presentation.people.list.PeopleAdapter.*
 
 import com.jobsity.tvseries.util.message.JobsityMessage
 import kotlinx.android.synthetic.main.error_try_again_view.*
-import kotlinx.android.synthetic.main.shows_list_view.*
+import kotlinx.android.synthetic.main.list_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class PeopleListFragment(var searchObserver: SearchObserver): Fragment(R.layout.shows_list_view), OnSearchPerform {
+class PeopleListFragment(var searchObserver: SearchObserver): Fragment(R.layout.list_view), OnSearchPerform, IPeopleAdapter {
 
     private val viewModel: PeopleListViewModel by viewModel()
-    private val adapter =
-        PeopleAdapter()
+    private val adapter = PeopleAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,6 +53,10 @@ class PeopleListFragment(var searchObserver: SearchObserver): Fragment(R.layout.
             rvShows.post { adapter.people = viewState.people }
         })
 
+        viewModel.personClicked.observe(viewLifecycleOwner, Observer {
+            PeopleInfoActivity.startActivity(activity, it)
+        })
+
         btnTryAgain.setOnClickListener {
             viewModel.didClickOnTryAgain()
         }
@@ -63,5 +69,9 @@ class PeopleListFragment(var searchObserver: SearchObserver): Fragment(R.layout.
 
     override fun onSearch(value: String?) {
         viewModel.search(value)
+    }
+
+    override fun onClick(person: Person) {
+        viewModel.didClickOnPerson(person)
     }
 }

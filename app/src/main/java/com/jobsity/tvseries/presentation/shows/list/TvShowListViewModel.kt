@@ -55,12 +55,19 @@ class TvShowListViewModel(var repository: TvShowRepository, application: Applica
                         viewState.value!!.copy()
                     }
                 }
+            } catch (e: Throwable) {
+                mutableViewState.value =  viewState.value!!.copy(
+                    isLoadingVisible = false,
+                    isErrorMessage = true,
+                    errorMessage = context.getString(R.string.generic_error_message),
+                    isTryAgainVisible = false)
             }
         }
 
     }
 
     private fun loadVideos() {
+        mutableViewState.value = viewState.value!!.copy(isLoadingVisible = true)
         Coroutines.main {
             try {
                 mutableViewState.value = repository.loadTvShows().run {

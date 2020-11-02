@@ -12,7 +12,7 @@ import com.jobsity.tvseries.util.GenericDiffCallback
 import com.jobsity.tvseries.util.extension.loadRoundPhoto
 import kotlinx.android.synthetic.main.person_row.view.*
 
-class PeopleAdapter: RecyclerView.Adapter<PeopleViewHolder>() {
+class PeopleAdapter(private val listener: IPeopleAdapter): RecyclerView.Adapter<PeopleViewHolder>() {
     var people = emptyList<Person>()
         @Synchronized set(value) {
             val result = DiffUtil.calculateDiff(
@@ -45,8 +45,16 @@ class PeopleAdapter: RecyclerView.Adapter<PeopleViewHolder>() {
         val txvPerson = itemView.txvPerson
 
         fun bind(person: Person) {
-            imgvPerson.loadRoundPhoto(person.image)
+            imgvPerson.loadRoundPhoto(person.mediumImage)
             txvPerson.text = person.name
+
+            itemView.setOnClickListener {
+                listener.onClick(person)
+            }
         }
+    }
+
+    interface IPeopleAdapter {
+        fun onClick(person: Person)
     }
 }

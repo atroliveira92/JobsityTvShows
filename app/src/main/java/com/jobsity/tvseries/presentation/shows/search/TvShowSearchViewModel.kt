@@ -60,6 +60,13 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
                             isTryAgainButtonVisible = false)
                     }
                 }
+            } catch (e: Throwable) {
+                mutableViewState.value = viewState.value!!.copy(
+                    isLoadingVisible = false,
+                    isListVisible = false,
+                    errorMessage = context.getString(R.string.generic_error_message),
+                    isTryAgainVisible = true,
+                    isTryAgainButtonVisible = false)
             }
         }
 

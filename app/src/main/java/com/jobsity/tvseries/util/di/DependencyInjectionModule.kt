@@ -11,6 +11,7 @@ import com.jobsity.tvseries.domain.repository.PeopleRepository
 import com.jobsity.tvseries.domain.repository.SecurityRepository
 import com.jobsity.tvseries.domain.repository.TvShowRepository
 import com.jobsity.tvseries.presentation.MainViewModel
+import com.jobsity.tvseries.presentation.people.info.PeopleInfoViewModel
 import com.jobsity.tvseries.presentation.people.list.PeopleListViewModel
 import com.jobsity.tvseries.presentation.pin.check.CheckPinViewModel
 import com.jobsity.tvseries.presentation.pin.set.SetPinViewModel
@@ -36,6 +37,7 @@ val applicationModule = module {
     viewModel { TvShowSearchViewModel(get(), get()) }
     viewModel { TvShowInfoViewModel(get(), get()) }
     viewModel { PeopleListViewModel(get(),get()) }
+    viewModel { PeopleInfoViewModel(get(), get()) }
     viewModel { FavoritesTvShowViewModel(get(), get()) }
     viewModel { SetPinViewModel(get(),get()) }
     viewModel { CheckPinViewModel(get(),get()) }

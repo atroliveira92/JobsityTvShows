@@ -5,17 +5,23 @@ import android.os.Parcelable
 
 data class Person (
     val name: String,
-    val image: String?
+    val mediumImage: String?,
+    val originalImage: String,
+    val id: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readInt()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeString(image)
+        parcel.writeString(mediumImage)
+        parcel.writeString(originalImage)
+        parcel.writeInt(id)
     }
 
     override fun describeContents(): Int {

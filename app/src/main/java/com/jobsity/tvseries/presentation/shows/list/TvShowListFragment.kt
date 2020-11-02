@@ -12,11 +12,11 @@ import com.jobsity.tvseries.presentation.shows.TvShowAdapter
 import com.jobsity.tvseries.presentation.shows.info.TvShowInfoActivity
 import com.jobsity.tvseries.util.message.JobsityMessage
 import kotlinx.android.synthetic.main.error_try_again_view.*
-import kotlinx.android.synthetic.main.shows_list_view.*
+import kotlinx.android.synthetic.main.list_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class TvShowListFragment: Fragment(R.layout.shows_list_view),
+class TvShowListFragment: Fragment(R.layout.list_view),
     TvShowAdapter.ITvShowAdapter {
 
     private val viewModel: TvShowListViewModel by viewModel()

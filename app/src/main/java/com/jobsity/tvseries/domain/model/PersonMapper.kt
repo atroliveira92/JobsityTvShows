@@ -6,12 +6,15 @@ object PersonMapper {
 
     fun map(peopleData: List<PeopleSearchData>): List<Person> {
         return peopleData.filter {
-            it.person?.image != null
+            it.person?.id != null
+            && it.person.image != null
             && it.person.name != null
         }.map {
             Person(
                 it.person!!.name!!,
-         it.person.image!!.medium?: it.person.image.original
+         it.person.image!!.medium?: it.person.image.original,
+                it.person.image.original!!,
+                it.person.id!!
             )
         }
     }

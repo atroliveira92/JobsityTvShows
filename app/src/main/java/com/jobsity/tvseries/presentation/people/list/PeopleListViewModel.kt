@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jobsity.tvseries.R
+import com.jobsity.tvseries.domain.model.Person
 import com.jobsity.tvseries.domain.repository.PeopleRepository
 import com.jobsity.tvseries.presentation.JobsityViewModel
+import com.jobsity.tvseries.presentation.people.PeopleListViewState
 import com.jobsity.tvseries.util.coroutine.Coroutines
 import com.jobsity.tvseries.util.exception.JobsityListException
 
@@ -17,6 +19,10 @@ class PeopleListViewModel(private val repository: PeopleRepository, application:
         )
     )
     val viewState: LiveData<PeopleListViewState> get() = mutableViewState
+
+    private val mutablePersonShowClick = MutableLiveData<Person>()
+    val personClicked: LiveData<Person> get() = mutablePersonShowClick
+
     private var searchTerm: String? = null
 
     fun search(searchTerm: String?) {
@@ -66,11 +72,23 @@ class PeopleListViewModel(private val repository: PeopleRepository, application:
                         )
                     }
                 }
+            } catch (e: Throwable) {
+                mutableViewState.value = viewState.value!!.copy(
+                    isLoadingVisible = false,
+                    isListVisible = false,
+                    errorMessage = context.getString(R.string.generic_error_message),
+                    isTryAgainVisible = true,
+                    isTryAgainButtonVisible = false
+                )
             }
         }
     }
 
     fun didClickOnTryAgain() {
         search(searchTerm)
+    }
+
+    fun didClickOnPerson(person: Person) {
+        mutablePersonShowClick.value = person
     }
 }
