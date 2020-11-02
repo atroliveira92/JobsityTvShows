@@ -62,6 +62,10 @@ class PeopleInfoActivity: AppCompatActivity(R.layout.person_info_view), TvShowAd
         btnTryAgain.setOnClickListener {
             viewModel.didClickOnTryAgain()
         }
+
+        imgvBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onReachLastItem() {}
