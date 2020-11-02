@@ -14,7 +14,7 @@ To install this app in a Android device:
 5) Tap Install unknown apps.
 6) Select the unknown app then tap the Allow from this source switch to turn on or off.
 
-The required resources are marked as completed below
+The required features are marked as completed below
 
 **Mandatory Features**
 - [x] List all of the series contained in the API used by the paging scheme provided by the API.
