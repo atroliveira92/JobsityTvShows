@@ -38,4 +38,5 @@
     <string name="created_by">Created by Arthur Oliveira</string>
     <string name="github">Github:</string>
     <string name="email">Email:</string>
+    <string name="no_show_was_found">No show was found</string>
 </resources>

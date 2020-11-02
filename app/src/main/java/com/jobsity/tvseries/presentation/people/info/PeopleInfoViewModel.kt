@@ -66,7 +66,7 @@ class PeopleInfoViewModel(private val repository: PeopleRepository, application:
                         viewState.value!!.copy(
                             isLoadingVisible = false,
                             showError = true,
-                            errorMessage = context.getString(R.string.error_load_tv_shows),
+                            errorMessage = context.getString(R.string.no_show_was_found),
                             showTryAgainButton = false)
                     }
                 }
