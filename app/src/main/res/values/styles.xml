@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="searchViewStyle">@style/AppTheme.SearchView</item>
     </style>
 
     <style name="MainActionBar.Popup" parent="ThemeOverlay.AppCompat.Light">
@@ -19,13 +20,18 @@
         <item name="android:textColorSecondary">@color/toolbar_controllers_secondary</item>
         <item name="actionMenuTextColor">@color/toolbar_menu_controller</item>
         <item name="android:textColor">@color/toolbar_controllers</item>
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/toolbar_background</item>
         <item name="android:textSize">@dimen/text_size_toobar</item>
+        <item name="android:textColorHint">@color/search_hint</item>
     </style>
 
     <style name="SpinnerTheme" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/spinner_background</item>
         <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="AppTheme.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
     </style>
 
 </resources>

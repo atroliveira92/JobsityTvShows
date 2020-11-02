@@ -22,11 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.shows.info.TvShowInfoActivity" />
-        <activity android:name=".presentation.shows.favorites.FavoritesTvShowsActivity" />
-        <activity android:name=".presentation.pin.set.SetPinActivity" />
-        <activity android:name=".presentation.pin.check.CheckPinActivity" />
-        <activity android:name=".presentation.people.info.PeopleInfoActivity" />
+        <activity android:name=".presentation.shows.info.TvShowInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.shows.favorites.FavoritesTvShowsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.pin.set.SetPinActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.pin.check.CheckPinActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.people.info.PeopleInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".presentation.about.AboutActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

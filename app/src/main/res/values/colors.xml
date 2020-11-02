@@ -7,6 +7,7 @@
     <color name="toolbar_controllers_secondary">#919090</color>
     <color name="toolbar_menu_background">#FFFFFF</color>
     <color name="toolbar_menu_controller">#000000</color>
+    <color name="toolbar_background">#2C2C2C</color>
     <color name="show_background_content">#000000</color>
     <color name="primary_text_color">#FFFFFF</color>
     <color name="secondary_text_color">#BDBDBD</color>

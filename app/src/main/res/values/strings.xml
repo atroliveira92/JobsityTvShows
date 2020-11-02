@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jobsity Tv Series</string>
+    <string name="app_name">Jobsity Tv Shows</string>
     <string name="no_internet_connection_message">No connection found. Please, make sure you have active data connection</string>
     <string name="circle_separator">●</string>
     <string name="try_again">Try again</string>
@@ -30,4 +30,12 @@
     <string name="wrong_pin_number">Wrong pin number.Try again!</string>
     <string name="lock_using_a_pin_number">Lock using a PIN number</string>
     <string name="set_pin_number_to_unlock_">Set your Pin Number to unlock \n%s</string>
+    <string name="favorites">Favorites</string>
+    <string name="set_pin">Set Pin</string>
+    <string name="about">About</string>
+    <string name="arthur_github">https://github.com/atroliveira92</string>
+    <string name="about_message">Jobsity Tv Show v1.0 - This app was create under the Jobsity\'s Android Code Challenge requirements for the Android Engineer position</string>
+    <string name="created_by">Created by Arthur Oliveira</string>
+    <string name="github">Github:</string>
+    <string name="email">Email:</string>
 </resources>

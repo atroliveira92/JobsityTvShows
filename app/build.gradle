@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.jobsity.tvseries"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -64,9 +64,6 @@ dependencies {
     implementation "org.koin:koin-android:2.0.1"
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
     implementation 'com.google.android.material:material:1.2.1'
-
-    //Material SearchView
-    implementation 'com.github.mancj:MaterialSearchBar:0.8.5'
 
     //Database
     def room_version = "2.2.5"
