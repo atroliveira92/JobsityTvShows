@@ -23,6 +23,8 @@ class TvShowSearchViewModel(private val repository: TvShowRepository, applicatio
     val tvShowClicked: LiveData<TvShow> get() = mutableTvShowClick
 
     fun search(searchTerm: String?) {
+        this.searchTerm = searchTerm
+        
         if (searchTerm.isNullOrEmpty()) {
             return
         }
