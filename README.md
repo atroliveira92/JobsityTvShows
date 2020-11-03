@@ -49,4 +49,3 @@ as:
   - Name
   - Image
   - Series they have participated in, with a link to the series details.
-
